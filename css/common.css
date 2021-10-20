@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+/* 基本设置
+ -------------------------------------------- */
+body {
+	font-family: 'Consolas','Arial','Microsoft YaHei','Meiryo',sans-serif;
+	font-size: 16px;
+	line-height: 1.7;
+	margin: 0;
+	padding: 0;
+}
+
+section,article, aside, nav, header, main, footer { display: block; }
+
+h1,h2,h3,h4 {
+	font-family: "Montserrat",sans-serif;
+	font-weight: normal;
+}
+
+ul, li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+a { text-decoration: none;}
+
+img { /* 适配流体图像 */
+	max-width: 100%;
+	height: auto;
+}
+
+.center { text-align: center; }
+
+/* header 页眉
+ -------------------------------------------- */
+header {
+	width: 100%;
+	padding: 6em 0 4em;
+	background: url("../images/header.jpg") no-repeat fixed center bottom / cover ;
+	position: relative;
+	text-align: center;
+	color: #FFF;
+}
+header#itempage { /* item页面时缩小页眉宽度 */
+	padding: 4em 0 2em;
+}
+header nav {
+	background: rgba(0, 0, 0, 0.1) ;
+	padding: 10px 0; 
+	width: 100%;
+	position: absolute;
+	top:0;
+}
+header nav ul{
+	margin: auto;
+	text-align: center;
+}
+header nav ul li{
+	display: inline-block;
+}
+header nav ul li a{
+	color: #FFF;
+	font-family: "Montserrat",sans-serif;
+	font-size: 16px;
+	padding: 0 1em;
+}
+header h1 a {
+	color: #FFF;
+}
+
+/* 主区域
+ -------------------------------------------- */
+main {
+	width: 100%;
+	max-width: 930px;
+	margin: 0 auto;
+	padding: 24px 0;
+}
+
+/* 设置链接的文字颜色 */
+main a { color: #2c9795; }
+main a:link,
+main a:visited { text-decoration: none; }
+main a:hover, main a:active  { text-decoration: underline; }
+
+/* footer 页脚
+ -------------------------------------------- */
+footer {
+	background-color: #114046;
+	color: #40666a;
+	font-family: "Montserrat",sans-serif;
+	text-align:center;
+	width: 100%;
+	padding: 6em 0;
+}
+
+	
+/* column设置
+ -------------------------------------------- */
+.row {
+	max-width: 930px;
+	margin: 0 auto 50px;
+}
+.row::after { 
+	content: ""; /* 创建伪元素 */
+	clear: both; /* 解除float浮动 */
+	display: block;
+}
+.col {
+	float: left;
+	margin-left: 4%;
+}
+.col:first-child {margin-left: 0;}
+.harf {width: 48%;}
+.quarter {width: 22%;}
+
+
+/* 表的装饰
+ -------------------------------------------- */
+table {
+	border: 1px solid #ddd;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+}
+table th {
+	background: #F5F5F5;
+	border: solid #ddd;
+	border-width: 0 0 1px 1px;
+	font-weight: bold;
+	line-height: 120%;
+	padding: 30px 8px;
+	text-align: center;
+	width: 20%;
+}
+table td {
+	border: 1px solid #ddd;
+	border-width: 0 0 1px 1px;
+	padding: 30px 8px;
+	text-align: left;
+	width: 80%;
+}
+
+
+main a.button { color: #fff; }
+
+main a.button:hover,
+main a.button:active { text-decoration: none; }
+
+
+
+/* ----------------------
+  屏幕宽度在599px以下时使用（用于智能手机）
+ ---------------------- */
+@media screen and (max-width: 599px) {
+	.col {
+		float: none; /* 解除float浮动，排成一纵列 */
+		margin-left: 0; /* 左外边距设为0 */
+		width: auto; /* 宽度填满（重置百分比%） */
+	}
+	.row {
+		padding: 0 8px; /* 设置左右各8px的内边距 */
+	}
+}
+
