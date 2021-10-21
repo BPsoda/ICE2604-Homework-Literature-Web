@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link href="/static/css/common.css" rel="stylesheet" type="text/css">
+    <script src="/static/js/delete_button.js" defer></script>
     <title>Page 2 电类工程导论B网站开发作业</title>
   </head>
 
@@ -12,7 +13,26 @@
       <p>Display and delete</p>
     </header>
     <main>
-      
+      <table>
+        <tr>
+          {% for i in labels %}
+            <th>
+              {{i}}
+            </th>
+          {% endfor %}
+          <th>operation</th>
+        </tr>
+        {% for i in content %}
+        <div>
+        <tr>
+          {% for j in i %}
+            <td> {{j}} </td>
+          {% endfor %}
+          <td class="operation"></td>
+        </tr>
+        </div>
+        {% endfor %}
+      </table>
     </main>
 
   </body>
