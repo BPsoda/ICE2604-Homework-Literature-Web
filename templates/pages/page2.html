@@ -9,7 +9,7 @@
 
   <body>
     <header>
-      <h1>Page 2</h1>\
+      <h1>Page 2</h1>
       <p>Display and delete</p>
     </header>
     <main>
@@ -23,14 +23,12 @@
           <th>operation</th>
         </tr>
         {% for i in content %}
-        <div>
         <tr>
           {% for j in i %}
             <td> {{j}} </td>
           {% endfor %}
           <td class="operation"></td>
         </tr>
-        </div>
         {% endfor %}
       </table>
     </main>

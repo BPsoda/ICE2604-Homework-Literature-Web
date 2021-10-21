@@ -36,7 +36,7 @@ def randomDisplay(page):
                         ORDER BY RAND() \
                         LIMIT 10')
         content = cursor.fetchall()
-        return flask.render_template('/pages/page1.html', labels=labels, content=content)
+        return flask.render_template('/pages/{}.html'.format(page), labels=labels, content=content)
         # return flask.render_template('/pages/page1.html', content=content)
     else:
         return flask.redirect(url_for(SearchbyId))

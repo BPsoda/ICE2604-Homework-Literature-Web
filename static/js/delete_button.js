@@ -2,10 +2,10 @@
 let btn=[]
 for(i = 0; i < 10; i++) {
     btn[i] = document.createElement('button')
-    btn[i].textContent = 'Deletee';
+    btn[i].textContent = 'Delete';
     document.getElementsByClassName('operation')[i].appendChild(btn[i]);
-    restButton.addEventListener('click', 
+    btn[i].addEventListener('click', 
     function() {
-        this.parentNode.parentNode.removeChild()
+        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)
     });
 }
