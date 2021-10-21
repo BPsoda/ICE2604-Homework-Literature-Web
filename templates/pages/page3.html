@@ -8,11 +8,34 @@
 
   <body>
     <header>
-      <h1>Page 3</h1>\
+      <h1>Page 3</h1>
       <p>Search and diplay</p>
     </header>
     <main>
-      
+      <form action="/pages/page3" name="searchId" method="get">
+        <label>Paper ID: </label>
+        <input type="text" name="searchField">
+        <input type="submit" value="Search" class="IDSubmit">
+      </form>
+
+      {% if flag %}
+      <table>
+        <tr>
+          {% for i in labels %}
+            <th>
+              {{i}}
+            </th>
+          {% endfor %}
+        </tr>
+        
+        <tr>
+          {% for i in content[0] %}
+            <td> {{i}} </td>
+          {% endfor %}
+        </tr>
+        
+      </table>
+    {% endif %}
     </main>
 
   </body>
