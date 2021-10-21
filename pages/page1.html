@@ -12,7 +12,22 @@
       <p>Random display 10 papers</p>
     </header>
     <main>
-      
+      <table>
+        <th>
+          {% for i in labels %}
+            <td>
+              {{i}}
+            </td>
+          {% endfor %}
+        </th>
+        {% for i in content %}
+        <tr>
+          {% for j in i %}
+            <td> {{j}} </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
     </main>
 
   </body>
