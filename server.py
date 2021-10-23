@@ -97,13 +97,17 @@ def randomDisplay(page):
     cursor.execute('SELECT * FROM paper \
                     ORDER BY RAND() \
                     LIMIT 10')
-    content = cursor.fetchall()
+    content = list(cursor.fetchall())
     # format data
-    for i in content[3:5]:
-        i = i.strip('[]').split(',')
-        for j in i:
-            j = j.strip('\"')
-        i = '\n'.join(i)
+    for h in range(len(content)):
+        content[h] = list(content[h])
+        print(content[h])
+        for i in range(3, 5):
+            content[h][i] = content[h][i].strip('[]').split(', ')
+            for j in range(len(content[h][i])):
+                content[h][i][j] = content[h][i][j].strip('"')
+            content[h][i] = '\n'.join(content[h][i])
+            print(content[h][i])
         
     return flask.render_template('/pages/{}.html'.format(page), labels=labels, content=content)
 
