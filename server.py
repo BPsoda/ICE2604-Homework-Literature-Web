@@ -51,6 +51,18 @@ def SearchbyId():
     cursor.execute('SELECT * FROM paper \
                     WHERE paper_id={}'.format(paperid))
     content = cursor.fetchall()
+    print(content)
+    content = list(content)
+    # format data
+    for h in range(len(content)):
+        content[h] = list(content[h])
+        print(content[h])
+        for i in range(3, 5):
+            content[h][i] = content[h][i].strip('[]').split(', ')
+            for j in range(len(content[h][i])):
+                content[h][i][j] = content[h][i][j].strip('"')
+            content[h][i] = '\n'.join(content[h][i])
+            print(content[h][i])
     return flask.render_template('/pages/page3.html', flag=True, labels=labels, content=content)
 
 # @app.route('/pages/page1')
