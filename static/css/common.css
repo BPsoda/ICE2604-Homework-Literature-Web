@@ -25,12 +25,11 @@ ul, li {
 
 a { text-decoration: none;}
 
-img { /* 适配流体图像 */
+img { 
 	max-width: 100%;
 	height: auto;
 }
 
-.center { text-align: center; }
 
 /* header 页眉
  -------------------------------------------- */
@@ -42,9 +41,7 @@ header {
 	text-align: center;
 	color: #FFF;
 }
-header#itempage { /* item页面时缩小页眉宽度 */
-	padding: 4em 0 2em;
-}
+
 header nav {
 	background: rgba(0, 0, 0, 0.1) ;
 	padding: 10px 0; 
@@ -73,7 +70,7 @@ header h1 a {
  -------------------------------------------- */
 main {
 	width: 100%;
-	max-width: 930px;
+	max-width: 90%;
 	margin: 0 auto;
 	padding: 24px 0;
 }
@@ -92,28 +89,8 @@ footer {
 	font-family: "Montserrat",sans-serif;
 	text-align:center;
 	width: 100%;
-	padding: 6em 0;
+	padding: 3em 0;
 }
-
-	
-/* column设置
- -------------------------------------------- */
-.row {
-	max-width: 930px;
-	margin: 0 auto 50px;
-}
-.row::after { 
-	content: ""; /* 创建伪元素 */
-	clear: both; /* 解除float浮动 */
-	display: block;
-}
-.col {
-	float: left;
-	margin-left: 4%;
-}
-.col:first-child {margin-left: 0;}
-.harf {width: 48%;}
-.quarter {width: 22%;}
 
 
 /* 表的装饰
@@ -132,14 +109,12 @@ table th {
 	line-height: 120%;
 	padding: 30px 8px;
 	text-align: center;
-	width: 20%;
 }
 table td {
 	border: 1px solid #ddd;
 	border-width: 0 0 1px 1px;
 	padding: 30px 8px;
 	text-align: left;
-	width: 80%;
 }
 
 
@@ -148,19 +123,19 @@ main a.button { color: #fff; }
 main a.button:hover,
 main a.button:active { text-decoration: none; }
 
-
-
-/* ----------------------
-  屏幕宽度在599px以下时使用（用于智能手机）
- ---------------------- */
-@media screen and (max-width: 599px) {
-	.col {
-		float: none; /* 解除float浮动，排成一纵列 */
-		margin-left: 0; /* 左外边距设为0 */
-		width: auto; /* 宽度填满（重置百分比%） */
-	}
-	.row {
-		padding: 0 8px; /* 设置左右各8px的内边距 */
-	}
+form {
+	margin: 3em;
+	text-align: center;
+}
+form .searchbox {
+	padding: 4px;
+	border-radius: 8px;
+	font-size: large;
+}
+form .IDSubmit {
+	font-size: large;
+	padding: 4px 8px;
+	background-color: #2c9795;
+	border-radius: 8px;
 }
 
