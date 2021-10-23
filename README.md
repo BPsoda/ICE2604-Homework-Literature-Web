@@ -4,7 +4,7 @@ Developed by Huang Haoxv
 ## Getting started
 - Clone this repo
 ``` shell
-git clone https://github.com/BPsoda/ICE2604-Homework-Literature-Web
+git clone https://github.com/BPsoda/ICE2604-Homework-Literature-Web.git
 ```
 - Start server
 ```shell
