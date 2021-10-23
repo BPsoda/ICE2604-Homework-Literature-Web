@@ -1,6 +1,6 @@
 # ICE2604-Homework-Literature-Web
 The web development homework of ICE2602.
-Develop by Huang Haoxv
+Developed by Huang Haoxv
 ## Getting started
 - Clone this repo
 ``` shell
