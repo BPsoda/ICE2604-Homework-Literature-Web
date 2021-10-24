@@ -37,11 +37,13 @@ def SearchbyId():
         print('Using GET method.')
         paperid = flask.request.args.get('searchField','')
     print('Using GET method.')
-    print(flask.request.form)
     print(paperid)
+    # if user hasn't input paper id, return blank table
     if len(paperid) < 1 : 
         return flask.render_template('/pages/page3.html', flag=False, alert=False)
-
+    # if the paperid is illegal, raise alert
+    if (not paperid.isdigit()) or int(paperid) > 9999:
+        return flask.render_template('/pages/page3.html', flag=False, alert = True)
     # get table colomn name
     cursor.execute("SELECT column_name FROM information_schema.columns \
                     WHERE TABLE_SCHEMA='ieei_web' AND table_name='paper'")
@@ -52,9 +54,6 @@ def SearchbyId():
                     WHERE paper_id={}'.format(paperid))
     content = cursor.fetchall()
     print(content)
-    # if can't find paper, raise alert
-    if (len(content)<1):
-        return flask.render_template('/pages/page3.html', flag=False, alert = True)
     content = list(content)
     # format data
     for h in range(len(content)):
