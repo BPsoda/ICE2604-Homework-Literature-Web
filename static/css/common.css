@@ -134,6 +134,7 @@ form .searchbox {
 }
 form .IDSubmit {
 	font-size: large;
+	color: #F5F5F5;
 	padding: 4px 8px;
 	background-color: #2c9795;
 	border-radius: 8px;

@@ -40,7 +40,7 @@ def SearchbyId():
     print(flask.request.form)
     print(paperid)
     if len(paperid) < 1 : 
-        return flask.render_template('/pages/page3.html', flag=False)
+        return flask.render_template('/pages/page3.html', flag=False, alert=False)
 
     # get table colomn name
     cursor.execute("SELECT column_name FROM information_schema.columns \
@@ -52,6 +52,9 @@ def SearchbyId():
                     WHERE paper_id={}'.format(paperid))
     content = cursor.fetchall()
     print(content)
+    # if can't find paper, raise alert
+    if (len(content)<1):
+        return flask.render_template('/pages/page3.html', flag=False, alert = True)
     content = list(content)
     # format data
     for h in range(len(content)):
@@ -63,7 +66,7 @@ def SearchbyId():
                 content[h][i][j] = content[h][i][j].strip('"')
             content[h][i] = '\n'.join(content[h][i])
             print(content[h][i])
-    return flask.render_template('/pages/page3.html', flag=True, labels=labels, content=content)
+    return flask.render_template('/pages/page3.html', flag=True, labels=labels, content=content, alert=False)
 
 # @app.route('/pages/page1')
 # def randomDisplay():
