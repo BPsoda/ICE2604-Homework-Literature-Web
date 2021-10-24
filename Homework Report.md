@@ -18,6 +18,13 @@ By Huang Haoxv
 ***
 ## Page 1
 Randomly select 10 papers from dataset and display their information in a table at every visit.
+### Flask
+- In order to respond to the user request, I add the `app.route()` decorator to the function so that when the path is accessed, it calls the function.
+  ```python
+  @app.route('/')
+  def welcome():
+      return flask.render_template('/index.html')
+  ```
 ### Randomly retrieve data
 - First, connect to mysql dataset with pymysql.
 - Second, get column names. Column names of the whole server are stored in information_schema.columns.
@@ -51,6 +58,17 @@ Randomly select 10 papers from dataset and display their information in a table 
 ### Modify data
 - Remove seperator and brackets.
 - For case that there are more than one author or keyword, add breakline between them.
+```python
+# format data
+    content = list(content)  # Turn tuple to list so that it can be edited
+    for h in range(len(content)):
+        content[h] = list(content[h])
+        for i in range(3, 5):
+            content[h][i] = content[h][i].strip('[]').split(', ')  # Remove seperator and brackets
+            for j in range(len(content[h][i])):
+                content[h][i][j] = content[h][i][j].strip('"')  # Remove quotation marks
+            content[h][i] = '\n'.join(content[h][i])  # Add breaklines
+```
 
 ### Render HTML
 - To fill in the data, we can apply HTML templates and `flask.render_template('<html>', <parameter>=<local parameter>)` method.
@@ -121,7 +139,7 @@ Page3 includes a search box. When user inputs paper id, the page reopens and pas
 - 'GET' adds the parameter directly after URL, while 'POST' establishes an independent TCP/IP connection. 'GET' is more efficient, while 'POST' is able to transport larger amount of data. Here I choose 'GET' to pass the paper id.
 - The `name` attribute of `<input>` determine the parameter name in URL.
 
-### Backend
+### Get parameter
 - To recieve and process the 'GET' request, I changed the `app.route()` decorator.
   ```python
   @app.route('/pages/page3', methods=['POST', 'GET'])
@@ -132,6 +150,22 @@ Page3 includes a search box. When user inputs paper id, the page reopens and pas
           paperid = flask.request.args.get('searchField','')
   ```
 - The parameter is visited with `request.args.get`
+
+### Handle illegal input
+- We expect the input to be an integer in range 0~9999.
+- If the input is illegal, raise an alert that asks user to input again.
+```python
+# in server.py
+if (not paperid.isdigit()) or int(paperid) > 9999:
+        return flask.render_template('/pages/page3.html', flag=False, alert = True)
+```
+```html
+<!--in page3.html-->
+{% if alert %}
+<script>alert("Illegal ID, please input again.(expect an integer in range 0~9999)");</script>
+{% endif %}
+```
+### Retrieve data
 - To retrieve data, simply append `paperid` to `WHERE` clause.
   ```python
   cursor.execute('SELECT * FROM paper \
